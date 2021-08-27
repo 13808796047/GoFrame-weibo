@@ -19,7 +19,7 @@
 
 # Database.
 [database]
-    link  = "mysql:root:12345678@tcp(127.0.0.1:3306)/test"
+    link  = "mysql:homestead:secret@tcp(127.0.0.1:33060)/laravel"
     debug = true
     # Database logger.
     [database.logger]
