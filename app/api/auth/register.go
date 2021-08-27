@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"fmt"
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/net/ghttp"
 )
@@ -19,7 +20,8 @@ type RegisterReq struct {
 
 // Index is a demonstration route handler for output "Hello World!".
 func (c *registerApi) ShowRegistrationForm(r *ghttp.Request) {
-
+	users,_ := g.Model("user").All()
+	fmt.Println(users)
 	r.Response.WriteTpl("layouts/app.html", g.Map{
 		"content":    "auth/register.html",
 		"title":      "注册",
