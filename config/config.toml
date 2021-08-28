@@ -3,7 +3,7 @@
 	ServerRoot  = "public"
 	ServerAgent = "gf-app"
 	LogPath     = "/tmp/log/gf-app/server"
-    port = 8080
+    address      = ":8080"
 # Logger.
 [logger]
     Path        = "/tmp/log/gf-app"
