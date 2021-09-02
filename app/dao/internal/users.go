@@ -19,40 +19,28 @@ type UsersDao struct {
 
 // UsersColumns defines and stores column names for table users.
 type UsersColumns struct {
-	Id                string //
-	Name              string //
-	Phone             string //
-	Email             string //
-	EmailVerifiedAt   string //
-	Password          string //
-	WeixinOpenid      string //
-	WeixinUnionid     string //
-	RememberToken     string //
-	CreatedAt         string //
-	UpdatedAt         string //
-	Avatar            string //
-	Introduction      string //
-	NotificationCount string //
-	LastActivedAt     string //
+	Id              string //
+	Name            string //
+	Email           string //
+	Password        string //
+	RememberToken   string //
+	EmailVerifiedAt string //
+	DeletedAt       string //
+	CreatedAt       string //
+	UpdatedAt       string //
 }
 
 //  usersColumns holds the columns for table users.
 var usersColumns = UsersColumns{
-	Id:                "id",
-	Name:              "name",
-	Phone:             "phone",
-	Email:             "email",
-	EmailVerifiedAt:   "email_verified_at",
-	Password:          "password",
-	WeixinOpenid:      "weixin_openid",
-	WeixinUnionid:     "weixin_unionid",
-	RememberToken:     "remember_token",
-	CreatedAt:         "created_at",
-	UpdatedAt:         "updated_at",
-	Avatar:            "avatar",
-	Introduction:      "introduction",
-	NotificationCount: "notification_count",
-	LastActivedAt:     "last_actived_at",
+	Id:              "id",
+	Name:            "name",
+	Email:           "email",
+	Password:        "password",
+	RememberToken:   "remember_token",
+	EmailVerifiedAt: "email_verified_at",
+	DeletedAt:       "deleted_at",
+	CreatedAt:       "created_at",
+	UpdatedAt:       "updated_at",
 }
 
 // NewUsersDao creates and returns a new DAO object for table data access.

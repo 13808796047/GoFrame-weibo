@@ -5,6 +5,7 @@ import (
 	"GoFrame-weibo/app/service"
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/net/ghttp"
+	"github.com/gogf/gf/util/gvalid"
 )
 
 // 用户API管理对象
@@ -15,6 +16,7 @@ type registerApi struct{}
 
 // Index is a demonstration route handler for output "Hello World!".
 func (c *registerApi) ShowRegistrationForm(r *ghttp.Request) {
+
 	r.Response.WriteTpl("layouts/app.html", g.Map{
 		"content":    "auth/register.html",
 		"title":      "注册",
@@ -23,15 +25,19 @@ func (c *registerApi) ShowRegistrationForm(r *ghttp.Request) {
 }
 func (c *registerApi) Register(r *ghttp.Request) {
 
+	// 1.验证
 	var req *request.RegisterReq
 	if err := r.Parse(&req); err != nil {
-		r.Response.WriteTpl("layouts/app.html", g.Map{
-			"message":map[string]interface{}{
-				"danger":err,
-			},
-			"title":      "提示",
-		})
-		r.Response.RedirectBack()
+		if v, ok := err.(gvalid.Error); ok {
+			r.Response.WriteTpl("layouts/app.html", g.Map{
+				"content":    "auth/register.html",
+				"title":      "注册",
+				"page_class": "register-page",
+				"user":&req,
+				"errors":v.Maps(),
+			})
+		}
+	}else{
+		service.User.Create(r.Context(),req.Name,req.Email,req.Password)
 	}
-	service.User.Create(r.Context())
 }

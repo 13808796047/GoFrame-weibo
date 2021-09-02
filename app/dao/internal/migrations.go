@@ -19,16 +19,22 @@ type MigrationsDao struct {
 
 // MigrationsColumns defines and stores column names for table migrations.
 type MigrationsColumns struct {
-	Id        string //
-	Migration string //
-	Batch     string //
+	IdMigration        string // surrogate key
+	Name               string // migration name, unique
+	CreatedAt          string // date migrated or rolled back
+	Statements         string // SQL statements for this migration
+	RollbackStatements string // SQL statment for rolling back migration
+	Status             string // update indicates it is a normal migration while rollback means this migration is rolled back
 }
 
 //  migrationsColumns holds the columns for table migrations.
 var migrationsColumns = MigrationsColumns{
-	Id:        "id",
-	Migration: "migration",
-	Batch:     "batch",
+	IdMigration:        "id_migration",
+	Name:               "name",
+	CreatedAt:          "created_at",
+	Statements:         "statements",
+	RollbackStatements: "rollback_statements",
+	Status:             "status",
 }
 
 // NewMigrationsDao creates and returns a new DAO object for table data access.
