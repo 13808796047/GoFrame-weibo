@@ -6,7 +6,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/util/gvalid"
 	"strings"
 )
@@ -29,7 +28,7 @@ func init()  {
 
 		//model.DB.Table(tableName).Where(dbFiled+" = ?", val).Count(&count)
 		r,_ := dao.Users.Ctx(ctx).Where(dbFiled, val).Count()
-		g.Dump(r)
+
 
 		if r != 0 {
 
