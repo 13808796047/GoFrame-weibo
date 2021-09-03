@@ -3,6 +3,7 @@ package api
 import (
 	"GoFrame-weibo/app/request"
 	"GoFrame-weibo/app/service"
+	"GoFrame-weibo/library/upload"
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/net/ghttp"
 	"github.com/gogf/gf/util/gvalid"
@@ -43,7 +44,9 @@ func (c *userApi) Update(r *ghttp.Request) {
 			})
 		}
 	} else {
-		service.User.Update(r.Context(), r.GetString("id"), req.Name, req.Email, r.GetString("introduction"))
+		file := r.GetUploadFile("avatar")
+		filename := upload.Save(file, "avatar", r.GetString("id"))
+		service.User.Update(r.Context(), r.GetString("id"), req.Name, req.Email, r.GetString("introduction"), filename)
 		r.Response.RedirectTo("/users/show?id=" + r.GetString("id"))
 	}
 }

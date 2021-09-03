@@ -18,4 +18,5 @@ type UserUpdateReq struct {
 	Name         string `p:"name"  v:"required|length:6,30#请输入账号|账号长度为:min到:max位"`
 	Email        string `p:"email"  v:"required|not_exists:users,email"`
 	Introduction string
+	Avatar       string
 }

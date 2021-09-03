@@ -10,7 +10,7 @@
 
       <div class="card-body">
 
-        <form action="/users/update?id={{.user.Id}}" method="POST" accept-charset="UTF-8">
+        <form action="/users/update?id={{.user.Id}}" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
           <div class="form-group">
             <label for="name-field">用户名</label>
             <input class="form-control {{if .errors.name }}is-invalid {{end}}" type="text" name="name" id="name-field" value="{{.user.Name}}" />
@@ -37,6 +37,15 @@
           <div class="form-group">
             <label for="introduction-field">个人简介</label>
             <textarea name="introduction" id="introduction-field" class="form-control" rows="3">{{.user.Introduction}}</textarea>
+          </div>
+          <div class="form-group mb-4">
+            <label for="" class="avatar-label">用户头像</label>
+            <input type="file" name="avatar" class="form-control-file">
+
+            {{if .user.Avatar}}
+            <br>
+            <img class="thumbnail img-responsive" src="{{ .user.Avatar }}" width="200" />
+            {{end}}
           </div>
           <div class="well well-sm">
             <button type="submit" class="btn btn-primary">保存</button>
