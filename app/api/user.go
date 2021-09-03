@@ -45,7 +45,10 @@ func (c *userApi) Update(r *ghttp.Request) {
 		}
 	} else {
 		file := r.GetUploadFile("avatar")
-		filename := upload.Save(file, "avatar", r.GetString("id"))
+		filename, err := upload.Save(file, "avatar", r.GetString("id"))
+		if err != nil {
+			return
+		}
 		service.User.Update(r.Context(), r.GetString("id"), req.Name, req.Email, r.GetString("introduction"), filename)
 		r.Response.RedirectTo("/users/show?id=" + r.GetString("id"))
 	}
