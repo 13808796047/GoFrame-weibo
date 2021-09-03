@@ -25,9 +25,10 @@ type UsersColumns struct {
 	Password        string //
 	RememberToken   string //
 	EmailVerifiedAt string //
-	DeletedAt       string //
 	CreatedAt       string //
 	UpdatedAt       string //
+	Avatar          string //
+	Introduction    string //
 }
 
 //  usersColumns holds the columns for table users.
@@ -38,9 +39,10 @@ var usersColumns = UsersColumns{
 	Password:        "password",
 	RememberToken:   "remember_token",
 	EmailVerifiedAt: "email_verified_at",
-	DeletedAt:       "deleted_at",
 	CreatedAt:       "created_at",
 	UpdatedAt:       "updated_at",
+	Avatar:          "avatar",
+	Introduction:    "introduction",
 }
 
 // NewUsersDao creates and returns a new DAO object for table data access.

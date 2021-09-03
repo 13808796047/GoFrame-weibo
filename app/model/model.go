@@ -26,7 +26,8 @@ type Users struct {
 	Password        string      `orm:"password"          json:"password"`        //
 	RememberToken   string      `orm:"remember_token"    json:"rememberToken"`   //
 	EmailVerifiedAt string      `orm:"email_verified_at" json:"emailVerifiedAt"` //
-	DeletedAt       *gtime.Time `orm:"deleted_at"        json:"deletedAt"`       //
 	CreatedAt       *gtime.Time `orm:"created_at"        json:"createdAt"`       //
 	UpdatedAt       *gtime.Time `orm:"updated_at"        json:"updatedAt"`       //
+	Avatar          string      `orm:"avatar"            json:"avatar"`          //
+	Introduction    string      `orm:"introduction"      json:"introduction"`    //
 }

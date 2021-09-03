@@ -10,7 +10,6 @@
 
             <div class="form-group row">
               <label for="name" class="col-md-4 col-form-label text-md-right">用户名</label>
-              {{.r}}
               <div class="col-md-6">
                 <input id="name" type="text" class="form-control {{if .errors.name }}is-invalid {{end}}" name="name" value="{{.user.Name}}" required autofocus>
                 {{ with .errors.name }}

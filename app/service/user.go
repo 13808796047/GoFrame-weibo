@@ -5,6 +5,8 @@ import (
 	"GoFrame-weibo/app/helpers"
 	"GoFrame-weibo/app/model"
 	"context"
+	"database/sql"
+	"github.com/gogf/gf/frame/g"
 )
 
 // 用户管理服务
@@ -29,4 +31,12 @@ func (s *userService) Show(ctx context.Context, id string) *model.Users {
 		return &_user
 	}
 	return nil
+}
+
+func (s *userService) Update(ctx context.Context, id, name, email, introduction string) (sql.Result, error) {
+	result, err := dao.Users.Ctx(ctx).Data(g.Map{"name": name, "email": email, "introduction": introduction}).Where("id", id).Update()
+	if err != nil {
+		return result, err
+	}
+	return result, nil
 }
